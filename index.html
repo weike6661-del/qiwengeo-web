@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="七文GEO - AI时代品牌流量基建服务商，专注生成式引擎优化（GEO）赛道，为中小微企业提供从实战培训到落地执行的全链路解决方案。">
+<title>七文GEO | AI时代品牌流量基建服务商</title>
+<style>
+:root {
+  --bg: #f8fafc;
+  --bg-dark: #0f172a;
+  --bg-card: #ffffff;
+  --text: #1e293b;
+  --text-muted: #64748b;
+  --text-light: #94a3b8;
+  --accent: #0d9488;
+  --accent-dark: #0f766e;
+  --accent-light: #ccfbf1;
+  --gold: #d4a853;
+  --border: #e2e8f0;
+  --radius: 16px;
+  --radius-sm: 10px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.06);
+  --shadow-lg: 0 10px 40px rgba(0,0,0,0.08);
+  --max-width: 1280px;
+  --nav-height: 72px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+a { text-decoration: none; color: inherit; }
+
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+
+/* ---- Navigation ---- */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  height: var(--nav-height);
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  transition: background 0.3s;
+}
+.nav.scrolled { background: rgba(255,255,255,0.97); box-shadow: var(--shadow); }
+.nav-inner {
+  max-width: var(--max-width); margin: 0 auto; padding: 0 24px;
+  height: 100%; display: flex; align-items: center; justify-content: space-between;
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 20px; font-weight: 700; color: var(--bg-dark);
+}
+.nav-brand-icon {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: linear-gradient(135deg, #0f172a 0%, #0d9488 100%);
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-weight: 800; font-size: 18px;
+}
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a {
+  font-size: 14px; color: var(--text-muted);
+  transition: color 0.2s; position: relative;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
+  background: var(--accent); transition: width 0.3s;
+}
+.nav-links a:hover::after { width: 100%; }
+.nav-cta {
+  padding: 8px 20px; border-radius: 8px; font-size: 14px; font-weight: 600;
+  background: var(--accent); color: #fff !important;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.nav-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(13,148,136,0.3);
+}
+.nav-cta::after { display: none !important; }
+.mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+.mobile-toggle span { display: block; width: 24px; height: 2px; background: var(--text); margin: 5px 0; transition: 0.3s; border-radius: 2px; }
+
+/* ---- Hero ---- */
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  position: relative; overflow: hidden;
+  padding-top: var(--nav-height);
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+}
+.hero-bg img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: brightness(0.35);
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(15,23,42,0.85) 0%, rgba(15,23,42,0.6) 50%, rgba(13,148,136,0.3) 100%);
+  z-index: 1;
+}
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 800px; margin: 0 auto;
+  text-align: center; padding: 120px 24px 100px;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 16px; border-radius: 100px;
+  background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.9); font-size: 13px; font-weight: 500;
+  margin-bottom: 28px; animation: fadeInUp 0.8s ease;
+
+}
+.hero-badge .dot {
+  width: 6px; height: 6px; border-radius: 50%; background: #14b8a6;
+  animation: pulse-dot 2s infinite;
+}
+@keyframes pulse-dot { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+.hero h1 {
+  font-size: clamp(36px, 6vw, 64px); font-weight: 800;
+  line-height: 1.15; letter-spacing: -0.02em;
+  color: #fff; margin-bottom: 20px;
+  animation: fadeInUp 0.8s 0.1s ease both;
+}
+.hero h1 .accent { color: #5eead4; }
+.hero-sub {
+  font-size: clamp(16px, 2.5vw, 20px); color: rgba(255,255,255,0.7);
+  line-height: 1.6; margin-bottom: 40px;
+  animation: fadeInUp 0.8s 0.2s ease both;
+}
+.hero-actions {
+  display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+  animation: fadeInUp 0.8s 0.3s ease both;
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 32px; border-radius: 10px; font-size: 15px; font-weight: 600;
+  border: none; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+  white-space: nowrap;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-primary {
+  background: var(--accent); color: #fff;
+  box-shadow: 0 4px 16px rgba(13,148,136,0.3);
+}
+.btn-primary:hover { box-shadow: 0 6px 24px rgba(13,148,136,0.4); }
+.btn-outline {
+  background: rgba(255,255,255,0.08); color: #fff;
+  border: 1px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(10px);
+}
+.btn-outline:hover { background: rgba(255,255,255,0.15); }
+.btn-lg { padding: 16px 40px; font-size: 16px; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- Section Common ---- */
+.section { padding: 100px 0; }
+.section-header { text-align: center; margin-bottom: 64px; }
+.section-label {
+  display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+  color: var(--accent); text-transform: uppercase; margin-bottom: 12px;
+}
+.section-title {
+  font-size: clamp(28px, 4vw, 42px); font-weight: 800;
+  color: var(--bg-dark); letter-spacing: -0.02em; line-height: 1.25;
+  margin-bottom: 16px;
+}
+.section-desc {
+  font-size: 17px; color: var(--text-muted); max-width: 600px; margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ---- About Section ---- */
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 48px; align-items: center;
+}
+.about-text h3 { font-size: 24px; font-weight: 700; margin-bottom: 16px; color: var(--bg-dark); }
+.about-text p { color: var(--text-muted); font-size: 15px; line-height: 1.8; margin-bottom: 12px; }
+.mission-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.mission-card {
+  padding: 28px; border-radius: var(--radius); background: var(--bg-card);
+  border: 1px solid var(--border); transition: transform 0.3s, box-shadow 0.3s;
+}
+.mission-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.mission-card .icon {
+  width: 44px; height: 44px; border-radius: 12px; display: flex;
+  align-items: center; justify-content: center; margin-bottom: 16px;
+  font-size: 20px;
+}
+.mission-card .icon.teal { background: var(--accent-light); color: var(--accent); }
+.mission-card .icon.gold { background: #fef3c7; color: var(--gold); }
+.mission-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--bg-dark); }
+.mission-card p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+/* Stats */
+.stats-row {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 24px; margin-top: 80px;
+}
+.stat-card {
+  text-align: center; padding: 24px; border-radius: var(--radius);
+  background: var(--bg-card); border: 1px solid var(--border);
+}
+.stat-card .num {
+  font-size: 36px; font-weight: 800; color: var(--accent); line-height: 1.2;
+}
+.stat-card .label { font-size: 14px; color: var(--text-muted); margin-top: 4px; }
+
+/* ---- Business Section ---- */
+.business-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+}
+.business-card {
+  background: var(--bg-card); border-radius: var(--radius);
+  border: 1px solid var(--border); overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.business-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.business-card-header {
+  padding: 36px 32px 0;
+}
+.business-card .tag {
+  display: inline-block; padding: 4px 12px; border-radius: 100px;
+  font-size: 12px; font-weight: 600; margin-bottom: 16px;
+}
+.business-card .tag.course { background: var(--accent-light); color: var(--accent); }
+.business-card .tag.media { background: #dbeafe; color: #2563eb; }
+.business-card h3 { font-size: 22px; font-weight: 700; margin-bottom: 12px; color: var(--bg-dark); }
+.business-card .desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 24px; }
+.business-features { list-style: none; padding: 0 32px 36px; }
+.business-features li {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 10px 0; border-top: 1px solid var(--border);
+  font-size: 14px; color: var(--text);
+}
+.business-features li:first-child { border-top: none; }
+.business-features .check { color: var(--accent); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+.target-users {
+  padding: 20px 32px 36px;
+}
+.target-users h4 { font-size: 13px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; }
+.target-users .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.target-users .tags span {
+  padding: 4px 14px; border-radius: 100px;
+  background: var(--bg); border: 1px solid var(--border);
+  font-size: 13px; color: var(--text-muted);
+}
+
+/* ---- Team Section ---- */
+.team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.team-visual {
+  position: relative; border-radius: var(--radius); overflow: hidden;
+  background: linear-gradient(135deg, #0f172a 0%, #134e4a 100%);
+  padding: 60px 48px; color: #fff;
+}
+.team-visual .big-num { font-size: 80px; font-weight: 800; line-height: 1; }
+.team-visual .big-num span { font-size: 32px; }
+.team-visual .team-sub { font-size: 16px; opacity: 0.7; margin-top: 12px; }
+.team-visual .team-dots {
+  position: absolute; right: 40px; bottom: 40px;
+  display: grid; grid-template-columns: repeat(5, 8px); gap: 10px;
+}
+.team-visual .team-dots div {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+}
+.team-visual .team-dots div.active { background: #5eead4; }
+.team-list { display: flex; flex-direction: column; gap: 24px; }
+.team-item { display: flex; gap: 16px; align-items: flex-start; }
+.team-item .idx {
+  width: 36px; height: 36px; border-radius: 10px; background: var(--accent-light);
+  color: var(--accent); display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 15px; flex-shrink: 0;
+}
+.team-item h4 { font-size: 16px; font-weight: 700; color: var(--bg-dark); margin-bottom: 4px; }
+.team-item .desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+/* ---- Case Section ---- */
+.case-wrapper {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;
+}
+.case-info h3 { font-size: 28px; font-weight: 800; color: var(--bg-dark); margin-bottom: 8px; }
+.case-info .case-tag {
+  display: inline-block; padding: 4px 12px; border-radius: 100px;
+  background: #fef3c7; color: var(--gold); font-size: 12px; font-weight: 600;
+  margin-bottom: 20px;
+}
+.pain-list { list-style: none; margin-top: 16px; }
+.pain-list li {
+  display: flex; gap: 10px; padding: 10px 0;
+  border-bottom: 1px solid var(--border); font-size: 14px; color: var(--text);
+}
+.pain-list li .icon { color: #ef4444; flex-shrink: 0; }
+
+.case-timeline { display: flex; flex-direction: column; gap: 0; }
+.timeline-step {
+  display: flex; gap: 16px; position: relative; padding-bottom: 32px;
+}
+.timeline-step:last-child { padding-bottom: 0; }
+.timeline-step .step-marker {
+  width: 40px; height: 40px; border-radius: 12px; background: var(--accent-light);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; color: var(--accent); flex-shrink: 0; font-size: 14px;
+  position: relative; z-index: 1;
+}
+.timeline-step:not(:last-child) .step-marker::after {
+  content: ''; position: absolute; top: 40px; left: 50%; transform: translateX(-50%);
+  width: 2px; height: 32px; background: var(--border);
+}
+.timeline-step h4 { font-size: 15px; font-weight: 700; color: var(--bg-dark); margin-bottom: 4px; }
+.timeline-step p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+.case-result {
+  margin-top: 32px; padding: 24px; border-radius: var(--radius);
+  background: linear-gradient(135deg, var(--accent-light), #f0fdfa);
+  border: 1px solid rgba(13,148,136,0.15);
+}
+.case-result h4 { font-size: 14px; font-weight: 600; color: var(--accent); margin-bottom: 8px; }
+.case-result p { font-size: 15px; color: var(--bg-dark); line-height: 1.7; font-weight: 500; }
+
+/* ---- CTA Section ---- */
+.cta-section {
+  background: linear-gradient(135deg, #0f172a 0%, #134e4a 100%);
+  padding: 100px 0; position: relative; overflow: hidden;
+}
+.cta-section::before {
+  content: ''; position: absolute; top: -50%; right: -20%;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: rgba(94,234,212,0.06); pointer-events: none;
+}
+.cta-content { text-align: center; position: relative; z-index: 1; }
+.cta-content h2 { font-size: clamp(28px, 4vw, 42px); font-weight: 800; color: #fff; margin-bottom: 16px; }
+.cta-content p { font-size: 17px; color: rgba(255,255,255,0.6); max-width: 500px; margin: 0 auto 36px; }
+
+/* ---- Footer ---- */
+.footer {
+  background: #0f172a; color: rgba(255,255,255,0.6);
+  padding: 64px 0 32px;
+}
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px; margin-bottom: 48px;
+}
+.footer-brand h3 { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+.footer-brand p { font-size: 14px; line-height: 1.7; }
+.footer-col h4 { font-size: 13px; font-weight: 600; color: #fff; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px; }
+.footer-col a { display: block; font-size: 14px; color: rgba(255,255,255,0.5); padding: 4px 0; transition: color 0.2s; }
+.footer-col a:hover { color: #5eead4; }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 24px; text-align: center; font-size: 13px;
+}
+
+/* ---- News Section ---- */
+.news-section { background: var(--bg); }
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.news-card {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex; flex-direction: column;
+}
+.news-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+.news-thumb {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+.news-thumb .thumb-bg {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+.news-card:hover .news-thumb .thumb-bg { transform: scale(1.05); }
+.news-thumb .thumb-placeholder {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 48px; color: rgba(255,255,255,0.3);
+}
+.news-category-tag {
+  position: absolute; top: 14px; left: 14px;
+  padding: 4px 12px; border-radius: 100px;
+  font-size: 11px; font-weight: 600;
+  color: #fff; backdrop-filter: blur(8px);
+  letter-spacing: 0.03em;
+}
+.news-category-tag.geo { background: rgba(13,148,136,0.75); }
+.news-category-tag.ai { background: rgba(37,99,235,0.75); }
+.news-category-tag.case { background: rgba(212,168,83,0.75); }
+.news-category-tag.training { background: rgba(147,51,234,0.75); }
+.news-category-tag.media { background: rgba(239,68,68,0.75); }
+.news-body {
+  padding: 22px 24px 24px;
+  display: flex; flex-direction: column;
+  flex: 1;
+}
+.news-date {
+  font-size: 12px; color: var(--text-muted);
+  margin-bottom: 10px; display: flex; align-items: center; gap: 6px;
+}
+.news-date::before {
+  content: '';
+  display: inline-block; width: 5px; height: 5px;
+  border-radius: 50%; background: var(--accent);
+}
+.news-body h3 {
+  font-size: 17px; font-weight: 700; color: var(--bg-dark);
+  line-height: 1.5; margin-bottom: 10px;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.news-body .excerpt {
+  font-size: 14px; color: var(--text-muted);
+  line-height: 1.7; margin-bottom: 18px;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex: 1;
+}
+.news-body .read-more {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 600; color: var(--accent);
+  transition: gap 0.3s; margin-top: auto;
+}
+.news-body .read-more:hover { gap: 10px; }
+.news-body .read-more svg {
+  transition: transform 0.3s;
+}
+.news-body .read-more:hover svg { transform: translateX(3px); }
+
+/* News load more */
+.news-load-more {
+  text-align: center; margin-top: 48px;
+}
+.news-load-more .btn-load {
+  padding: 12px 40px; border-radius: 10px;
+  border: 1px solid var(--border); background: var(--bg-card);
+  color: var(--text); font-size: 14px; font-weight: 600; cursor: pointer;
+  transition: all 0.2s;
+}
+.news-load-more .btn-load:hover {
+  border-color: var(--accent); color: var(--accent);
+  box-shadow: 0 4px 16px rgba(13,148,136,0.1);
+}
+
+/* News detail modal */
+.news-modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 2000;
+  background: rgba(15,23,42,0.75); backdrop-filter: blur(6px);
+  align-items: center; justify-content: center; padding: 24px;
+}
+.news-modal-overlay.show { display: flex; }
+.news-modal {
+  background: var(--bg-card); border-radius: var(--radius);
+  max-width: 720px; width: 100%; max-height: 85vh; overflow-y: auto;
+  position: relative; animation: fadeInUp 0.3s ease;
+}
+.news-modal-close {
+  position: sticky; top: 16px; float: right; z-index: 10;
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid var(--border); background: var(--bg-card);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; margin-right: 16px; transition: background 0.2s;
+}
+.news-modal-close:hover { background: var(--bg); }
+.news-modal-body { padding: 0 32px 40px; clear: both; }
+.news-modal-body .modal-category {
+  display: inline-block; padding: 4px 12px; border-radius: 100px;
+  font-size: 11px; font-weight: 600; margin-bottom: 16px;
+}
+.news-modal-body .modal-date {
+  font-size: 13px; color: var(--text-muted); margin-bottom: 12px;
+}
+.news-modal-body h2 {
+  font-size: 26px; font-weight: 800; color: var(--bg-dark);
+  line-height: 1.4; margin-bottom: 24px;
+}
+.news-modal-body .modal-content {
+  font-size: 15px; color: var(--text); line-height: 1.9;
+}
+.news-modal-body .modal-content p { margin-bottom: 16px; }
+.news-modal-body .modal-content h3 {
+  font-size: 18px; font-weight: 700; color: var(--bg-dark);
+  margin: 28px 0 12px;
+}
+.news-modal-body .modal-content ul {
+  margin: 12px 0 20px; padding-left: 20px;
+}
+.news-modal-body .modal-content li {
+  margin-bottom: 8px; color: var(--text-muted);
+}
+
+@media (max-width: 1024px) {
+  .news-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .news-grid { grid-template-columns: 1fr; }
+  .news-modal { margin: 0 12px; }
+  .news-modal-body { padding: 0 20px 32px; }
+}
+
+/* ---- Contact Form ---- */
+.contact-section {
+  background: linear-gradient(135deg, #0f172a 0%, #134e4a 100%);
+  padding: 100px 0; position: relative; overflow: hidden;
+}
+.contact-section::before {
+  content: ''; position: absolute; top: -50%; right: -20%;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: rgba(94,234,212,0.06); pointer-events: none;
+}
+.contact-inner {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;
+}
+.contact-info h2 { font-size: clamp(28px, 4vw, 42px); font-weight: 800; color: #fff; margin-bottom: 16px; }
+.contact-info > p { font-size: 17px; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 40px; }
+.contact-details { display: flex; flex-direction: column; gap: 20px; }
+.contact-detail-item {
+  display: flex; align-items: center; gap: 16px;
+  padding: 16px 20px; border-radius: 12px;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+}
+.contact-detail-item .detail-icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: rgba(13,148,136,0.3); display: flex;
+  align-items: center; justify-content: center; flex-shrink: 0;
+  color: #5eead4; font-size: 18px;
+}
+.contact-detail-item .detail-text .label { font-size: 12px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.05em; }
+.contact-detail-item .detail-text .value { font-size: 15px; color: #fff; font-weight: 500; margin-top: 2px; }
+
+.contact-form-wrap {
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius); padding: 40px; backdrop-filter: blur(10px);
+}
+.contact-form-wrap h3 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+.contact-form-wrap > p { font-size: 14px; color: rgba(255,255,255,0.5); margin-bottom: 28px; }
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.7); margin-bottom: 8px; }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%; padding: 12px 16px; border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.06);
+  color: #fff; font-size: 14px; outline: none; transition: border-color 0.2s;
+  font-family: inherit;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color: var(--accent); }
+.form-group select option { background: #1e293b; color: #fff; }
+.form-group textarea { min-height: 100px; resize: vertical; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-submit {
+  width: 100%; padding: 14px; border-radius: 10px; border: none;
+  background: var(--accent); color: #fff; font-size: 15px; font-weight: 600;
+  cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+}
+.form-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(13,148,136,0.4); }
+.form-success {
+  display: none; text-align: center; padding: 40px 20px;
+}
+.form-success.show { display: block; }
+.form-success .success-icon {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: rgba(13,148,136,0.2); display: flex;
+  align-items: center; justify-content: center; margin: 0 auto 20px;
+  font-size: 28px; color: #5eead4;
+}
+.form-success h4 { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+.form-success p { font-size: 14px; color: rgba(255,255,255,0.6); }
+
+@media (max-width: 968px) {
+  .contact-inner { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+}
+@media (max-width: 968px) {
+  .nav-links { display: none; }
+  .nav-links.open {
+    display: flex; flex-direction: column; position: absolute;
+    top: var(--nav-height); left: 0; right: 0; background: #fff;
+    padding: 24px; gap: 16px; box-shadow: var(--shadow-lg);
+  }
+  .mobile-toggle { display: block; }
+
+  .about-grid, .case-wrapper, .team-grid { grid-template-columns: 1fr; }
+  .mission-cards { grid-template-columns: 1fr; }
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  .business-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+
+  .hero h1 { font-size: 32px; }
+  .section { padding: 72px 0; }
+}
+@media (max-width: 480px) {
+  .stats-row { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .hero-actions { flex-direction: column; align-items: center; }
+  .btn { width: 100%; justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">
+      <div class="nav-brand-icon">七</div>
+      七文GEO
+    </a>
+    <div class="nav-links" id="navLinks">
+  <a href="#about">关于我们</a>
+      <a href="#business">核心业务</a>
+      <a href="#team">师资力量</a>
+      <a href="#cases">服务案例</a>
+      <a href="#news">新闻动态</a>
+      <a href="#contact-form" class="nav-cta">立即咨询</a>
+    </div>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="菜单">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <img src="assets/images/Abstract_geometric_technology__2026-06-03T11-42-08.png" alt="">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      生成式引擎优化（GEO）实战先行者
+    </div>
+    <h1>让品牌在<span class="accent">AI时代</span><br>被看见、被信任、被选择</h1>
+    <p class="hero-sub">从零基础到商业闭环，七文GEO为您提供品牌流量基建全链路解决方案</p>
+    <div class="hero-actions">
+      <a href="#business" class="btn btn-primary btn-lg">了解核心业务</a>
+      <a href="#contact-form" class="btn btn-outline btn-lg">免费获取方案</a>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">关于我们</span>
+      <h2 class="section-title">扎根赣州，面向全国的AI流量基建服务商</h2>
+      <p class="section-desc">深耕GEO赛道，为中小微企业与创业者提供从实战培训到落地执行的全链路解决方案</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <h3>赣州七文在线咨询服务有限公司</h3>
+        <p>成立于2023年，依托强大的师资力量和互联网资源，聚焦AI搜索时代的获客与品牌信任建设。公司打造了一套低门槛、高落地的GEO实战体系，主推课程以「能落地、能变现、好上手」为核心，帮助学员与客户抓住生成式引擎的流量红利。</p>
+        <p>我们不只是教方法，更提供从词库搭建、内容生产到品牌曝光的完整闭环服务，让每一个品牌都能在AI时代脱颖而出。</p>
+      </div>
+      <div class="mission-cards">
+        <div class="mission-card">
+          <div class="icon teal">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h4>使命</h4>
+          <p>让品牌在AI时代被看见</p>
+        </div>
+        <div class="mission-card">
+          <div class="icon gold">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h4>愿景</h4>
+          <p>赋能本土品牌与个人IP，借力AI实现品牌增长与商业破局</p>
+        </div>
+      </div>
+    </div>
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="num">2023</div>
+        <div class="label">公司成立</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">100<span style="font-size:20px">+</span></div>
+        <div class="label">实战师资团队</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">10<span style="font-size:20px">万+</span></div>
+        <div class="label">累计服务客户</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">10<span style="font-size:20px">年+</span></div>
+        <div class="label">行业深耕经验</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Business -->
+<section class="section" id="business" style="background:#fff;">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">核心业务</span>
+      <h2 class="section-title">从培训到落地，一站式GEO解决方案</h2>
+      <p class="section-desc">覆盖GEO全链路，让每一位客户都能掌握AI时代的品牌流量密码</p>
+    </div>
+    <div class="business-grid">
+
+      <!-- Card 1: Training -->
+      <div class="business-card">
+        <div class="business-card-header">
+          <span class="tag course">王牌课程</span>
+          <h3>GEO优化实战训练营</h3>
+          <p class="desc">以「从零基础到商业闭环」为目标，覆盖平台规则拆解、词库搭建、EEAT信任构建、内容攻坚、代运营变现玩法全链路，配套品牌网站搭建教程。</p>
+        </div>
+        <ul class="business-features">
+          <li><span class="check">&#10003;</span> 平台规则拆解与词库搭建</li>
+          <li><span class="check">&#10003;</span> EEAT信任构建与内容攻坚</li>
+          <li><span class="check">&#10003;</span> 代运营变现玩法实战</li>
+          <li><span class="check">&#10003;</span> 品牌网站搭建教程配套</li>
+        </ul>
+        <div class="target-users">
+          <h4>适配人群</h4>
+          <div class="tags">
+            <span>创业者 & 电商老板</span>
+            <span>品牌/市场从业者</span>
+            <span>内容 & 增长负责人</span>
+            <span>超级个体 & 机构</span>
+            <span>AI获客学习者</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Media Operations -->
+      <div class="business-card">
+        <div class="business-card-header">
+          <span class="tag media">自媒体运营</span>
+          <h3>自媒体运营/代运营 & 互联网营销</h3>
+          <p class="desc">核心主创从2016年深耕自媒体赛道，100+自媒体师资团队，讲师从业时限均在10年以上。打通「内容生产→平台收录→用户转化」的流量闭环。</p>
+        </div>
+        <ul class="business-features">
+          <li><span class="check">&#10003;</span> 账号定位与内容策划</li>
+          <li><span class="check">&#10003;</span> 全平台流量增长支持</li>
+          <li><span class="check">&#10003;</span> GEO优化 + 自媒体双引擎</li>
+          <li><span class="check">&#10003;</span> 累计服务数十万客户</li>
+        </ul>
+        <div class="target-users">
+          <h4>服务对象</h4>
+          <div class="tags">
+            <span>个人IP打造</span>
+            <span>企业品牌运营</span>
+            <span>自媒体代运营</span>
+            <span>内容矩阵搭建</span>
+            <span>商业变现指导</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Team -->
+<section class="section" id="team">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">师资力量</span>
+      <h2 class="section-title">100+实战派导师，全是操盘手</h2>
+      <p class="section-desc">课程内容全部来自真实项目沉淀，配套可直接复用的模板、指令与工具</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-visual">
+        <div class="big-num">100<span>+</span></div>
+        <div class="team-sub">实战派师资团队</div>
+        <div class="team-dots">
+          <div class="active"></div><div class="active"></div><div class="active"></div><div class="active"></div><div></div>
+        </div>
+      </div>
+      <div class="team-list">
+        <div class="team-item">
+          <div class="idx">01</div>
+          <div>
+            <h4>10年+资深自媒体操盘手</h4>
+            <p class="desc">所有讲师均拥有10年以上一线操盘经验，非纸上谈兵的理论派，而是实打实的行业老兵。</p>
+          </div>
+        </div>
+        <div class="team-item">
+          <div class="idx">02</div>
+          <div>
+            <h4>国内首批GEO实战导师</h4>
+            <p class="desc">多位核心讲师为国内首批GEO实战导师，拥有多年一线操盘经验，走在行业最前沿。</p>
+          </div>
+        </div>
+        <div class="team-item">
+          <div class="idx">03</div>
+          <div>
+            <h4>真实项目沉淀，避免学完不会用</h4>
+            <p class="desc">课程内容全部来自真实项目，配套可直接复用的模板、指令与工具，学完即用。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Case Study -->
+<section class="section" id="cases" style="background:#fff;">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">服务案例</span>
+      <h2 class="section-title">从0到1，见证品牌AI获客蜕变</h2>
+    </div>
+    <div class="case-wrapper">
+      <div class="case-info">
+        <h3>驰青春</h3>
+        <span class="case-tag">赣州本土假发定制品牌</span>
+        <p style="color:var(--text-muted);font-size:14px;line-height:1.7;">
+          专注中老年假发定制与形象重塑，在赣州章贡区、瑞金市开设实体门店。
+        </p>
+        <div style="margin-top:24px;">
+          <h4 style="font-size:14px;font-weight:600;color:#ef4444;margin-bottom:12px;">核心痛点</h4>
+          <ul class="pain-list">
+            <li><span class="icon">&#10007;</span> 传统获客难：极度依赖线下地推与熟人介绍</li>
+            <li><span class="icon">&#10007;</span> 信任建立难：全网缺乏权威可信的品牌内容</li>
+            <li><span class="icon">&#10007;</span> 本地转化低：线上无精准内容引流，门店客流受限</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <h4 style="font-size:14px;font-weight:600;color:var(--accent);margin-bottom:16px;">七文GEO解决方案</h4>
+        <div class="case-timeline">
+          <div class="timeline-step">
+            <div class="step-marker">1</div>
+            <div>
+              <h4>AI引擎内容基建</h4>
+              <p>构建GEO专属内容矩阵，覆盖AI问答高频问题，让驰青春在生成式引擎中被优先引用</p>
+            </div>
+          </div>
+          <div class="timeline-step">
+            <div class="step-marker">2</div>
+            <div>
+              <h4>权威信任资产沉淀</h4>
+              <p>梳理品牌资质及客户案例，打造AI可信权威内容</p>
+            </div>
+          </div>
+          <div class="timeline-step">
+            <div class="step-marker">3</div>
+            <div>
+              <h4>本地流量精准激活</h4>
+              <p>针对赣州、瑞金等区域关键词，优化内容地域适配性，提升转化率</p>
+            </div>
+          </div>
+          <div class="timeline-step">
+            <div class="step-marker">4</div>
+            <div>
+              <h4>持续优化排名上升</h4>
+              <p>持续发布优质文章，品牌在全网AI问答平台排名稳步上升</p>
+            </div>
+          </div>
+        </div>
+        <div class="case-result">
+          <h4>最终成果</h4>
+          <p>七文GEO优化2个月后，服务客户已能稳定从豆包等AI问答平台获客，并达成业务成交。实现从「品牌曝光」到「获客变现」的完整商业闭环。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- News Section -->
+<section class="section news-section" id="news">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">新闻动态</span>
+      <h2 class="section-title">GEO行业前沿资讯 &amp; 七文最新动态</h2>
+      <p class="section-desc">紧跟AI搜索时代脉搏，分享GEO实战干货与行业洞察</p>
+    </div>
+    <div class="news-grid" id="newsGrid">
+
+      <!-- Article 1 -->
+      <div class="news-card" data-article="1">
+        <div class="news-thumb">
+          <div class="thumb-placeholder" style="background:linear-gradient(135deg,#0f172a 0%,#134e4a 60%,#0d9488 100%);">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <span class="news-category-tag ai">行业趋势</span>
+        </div>
+        <div class="news-body">
+          <span class="news-date">2026-05-28</span>
+          <h3>AI搜索时代全面来临：GEO优化为何成为企业品牌必修课</h3>
+          <p class="excerpt">随着豆包、Kimi、文心一言等AI搜索引擎用户量突破亿级，传统SEO正在被GEO（生成式引擎优化）逐步替代。企业如果不主动布局AI问答平台的内容生态，将在未来3年内面临严重的品牌曝光危机。</p>
+          <a class="read-more" onclick="openArticle(1)">
+            阅读全文 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Article 2 -->
+      <div class="news-card" data-article="2">
+        <div class="news-thumb">
+          <div class="thumb-placeholder" style="background:linear-gradient(135deg,#1e3a5f 0%,#2563eb 100%);">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <span class="news-category-tag training">训练营</span>
+        </div>
+        <div class="news-body">
+          <span class="news-date">2026-05-20</span>
+          <h3>七文GEO实战训练营第二期圆满收官，学员直呼"颠覆认知"</h3>
+          <p class="excerpt">第二期训练营吸引了来自全国各地的50余位学员，涵盖电商、教育、本地服务等多个行业。经过21天密集训练，多位学员已成功搭建品牌GEO内容矩阵并开始获取AI搜索流量。</p>
+          <a class="read-more" onclick="openArticle(2)">
+            阅读全文 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Article 3 -->
+      <div class="news-card" data-article="3">
+        <div class="news-thumb">
+          <div class="thumb-placeholder" style="background:linear-gradient(135deg,#713f12 0%,#d4a853 100%);">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          </div>
+          <span class="news-category-tag case">客户案例</span>
+        </div>
+        <div class="news-body">
+          <span class="news-date">2026-05-15</span>
+          <h3>驰青春品牌2个月GEO优化深度复盘：从无人问津到稳定获客</h3>
+          <p class="excerpt">赣州本土假发定制品牌驰青春，在七文GEO团队的协助下，仅用2个月便实现从AI问答平台零曝光到日均10+精准咨询的跨越。本文深度还原完整操盘过程。</p>
+          <a class="read-more" onclick="openArticle(3)">
+            阅读全文 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Article 4 -->
+      <div class="news-card" data-article="4">
+        <div class="news-thumb">
+          <div class="thumb-placeholder" style="background:linear-gradient(135deg,#2d1b69 0%,#7c3aed 100%);">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+          </div>
+          <span class="news-category-tag ai">行业报告</span>
+        </div>
+        <div class="news-body">
+          <span class="news-date">2026-05-08</span>
+          <h3>2026年GEO趋势报告：中小微企业如何抓住AI流量红利窗口期</h3>
+          <p class="excerpt">报告指出：目前AI搜索引擎对优质品牌内容的索引覆盖率不足15%，这意味着早期布局的企业将享受巨大的流量红利。窗口期预计仅有18-24个月。</p>
+          <a class="read-more" onclick="openArticle(4)">
+            阅读全文 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Article 5 -->
+      <div class="news-card" data-article="5">
+        <div class="news-thumb">
+          <div class="thumb-placeholder" style="background:linear-gradient(135deg,#7f1d1d 0%,#dc2626 100%);">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <span class="news-category-tag media">运营干货</span>
+        </div>
+        <div class="news-body">
+          <span class="news-date">2026-04-28</span>
+          <h3>从0到10万用户：七文GEO自媒体矩阵运营实战经验全分享</h3>
+          <p class="excerpt">七文核心团队自2016年深耕自媒体赛道，累计服务数十万客户。本文首次公开团队内部使用的「内容三板斧」方法论，以及如何让AI优先引用你的品牌内容。</p>
+          <a class="read-more" onclick="openArticle(5)">
+            阅读全文 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Article 6 -->
+      <div class="news-card" data-article="6">
+        <div class="news-thumb">
+          <div class="thumb-placeholder" style="background:linear-gradient(135deg,#064e3b 0%,#059669 100%);">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+          </div>
+          <span class="news-category-tag geo">GEO干货</span>
+        </div>
+        <div class="news-body">
+          <span class="news-date">2026-04-20</span>
+          <h3>GEO vs SEO终极对比：AI时代品牌曝光的新战场该如何布局</h3>
+          <p class="excerpt">传统搜索引擎优化（SEO）关注的是百度、Google的排名，而GEO关注的是AI问答引擎的内容引用。两者逻辑完全不同，但可以形成互补。本文为你拆解核心差异与双线布局策略。</p>
+          <a class="read-more" onclick="openArticle(6)">
+            阅读全文 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Hidden articles (lazy-loaded) -->
+    <div class="news-grid" id="newsGridMore" style="display:none;margin-top:28px;">
+      <!-- Article 7 -->
+      <div class="news-card" data-article="7">
+        <div class="news-thumb">
+          <div class="thumb-placeholder" style="background:linear-gradient(135deg,#1e293b 0%,#334155 100%);">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <span class="news-category-tag training">学员故事</span>
+        </div>
+        <div class="news-body">
+          <span class="news-date">2026-04-12</span>
+          <h3>学员专访：传统制造业老板如何用GEO3个月打开线上获客新渠道</h3>
+          <p class="excerpt">来自东莞的五金加工厂老板李总，在参加七文GEO训练营后，用一套AI内容矩阵打破了传统制造业「靠关系接单」的困局，3个月累计从AI搜索获取精准询盘200+。</p>
+          <a class="read-more" onclick="openArticle(7)">
+            阅读全文 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Article 8 -->
+      <div class="news-card" data-article="8">
+        <div class="news-thumb">
+          <div class="thumb-placeholder" style="background:linear-gradient(135deg,#0c4a6e 0%,#0284c7 100%);">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="17.5" y2="17.5"/><path d="M4 20l7-7"/></svg>
+          </div>
+          <span class="news-category-tag geo">技术分享</span>
+        </div>
+        <div class="news-body">
+          <span class="news-date">2026-04-05</span>
+          <h3>EEAT信任体系搭建指南：让AI引擎主动引用你的品牌内容</h3>
+          <p class="excerpt">EEAT（经验、专业、权威、信任）是AI搜索引擎评估内容质量的核心框架。本文详解如何围绕EEAT四个维度，系统性搭建品牌内容资产，让AI优先推荐你的品牌。</p>
+          <a class="read-more" onclick="openArticle(8)">
+            阅读全文 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Article 9 -->
+      <div class="news-card" data-article="9">
+        <div class="news-thumb">
+          <div class="thumb-placeholder" style="background:linear-gradient(135deg,#431407 0%,#ea580c 100%);">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
+          <span class="news-category-tag media">行业资讯</span>
+        </div>
+        <div class="news-body">
+          <span class="news-date">2026-03-28</span>
+          <h3>七文GEO受邀参加2026中国AI营销峰会，分享中小企业GEO实战经验</h3>
+          <p class="excerpt">作为国内首批专注GEO赛道的服务商，七文GEO受邀在峰会上做主题分享，现场发布《中小微企业AI搜索获客白皮书》，引发行业广泛关注。</p>
+          <a class="read-more" onclick="openArticle(9)">
+            阅读全文 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="news-load-more" id="newsLoadMore">
+      <button class="btn-load" onclick="loadMoreNews()">
+        加载更多新闻 <span style="margin-left:4px;">↓</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- News detail modal -->
+<div class="news-modal-overlay" id="newsModal">
+  <div class="news-modal">
+    <button class="news-modal-close" onclick="closeArticle()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="news-modal-body" id="newsModalBody"></div>
+  </div>
+</div>
+
+<!-- Contact Form -->
+<section class="contact-section" id="contact-form">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="contact-info">
+        <h2>准备好让品牌<br>在AI时代被看见了吗？</h2>
+        <p>立即联系我们，获取专属GEO品牌流量方案</p>
+        <div class="contact-details">
+          <div class="contact-detail-item">
+            <div class="detail-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="detail-text">
+              <div class="label">公司地址</div>
+              <div class="value">江西省赣州市</div>
+            </div>
+          </div>
+          <div class="contact-detail-item">
+            <div class="detail-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="detail-text">
+              <div class="label">业务咨询</div>
+              <div class="value">欢迎联系我们获取方案</div>
+            </div>
+          </div>
+          <div class="contact-detail-item">
+            <div class="detail-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="detail-text">
+              <div class="label">服务时间</div>
+              <div class="value">周一至周日 9:00 - 21:00</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-wrap" id="formWrap">
+        <h3>免费获取GEO方案</h3>
+        <p>填写下方信息，我们的专家将在24小时内联系您</p>
+        <form id="contactForm" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>姓名 *</label>
+              <input type="text" name="name" placeholder="请输入您的姓名" required>
+            </div>
+            <div class="form-group">
+              <label>手机号 *</label>
+              <input type="tel" name="phone" placeholder="请输入手机号码" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>企业/品牌名称</label>
+            <input type="text" name="company" placeholder="请输入企业名称">
+          </div>
+          <div class="form-group">
+            <label>您的需求</label>
+            <select name="need">
+              <option value="">请选择您的需求</option>
+              <option value="training">GEO优化实战训练营</option>
+              <option value="media">自媒体运营/代运营</option>
+              <option value="marketing">互联网营销服务</option>
+              <option value="consult">品牌GEO诊断咨询</option>
+              <option value="other">其他需求</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>补充说明</label>
+            <textarea name="message" placeholder="请描述您的具体需求，方便我们为您定制方案"></textarea>
+          </div>
+          <button type="submit" class="form-submit">提交咨询</button>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <div class="success-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h4>提交成功！</h4>
+          <p>感谢您的咨询，我们的专家将在24小时内联系您。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>七文GEO</h3>
+        <p>AI时代品牌流量基建服务商<br>专注生成式引擎优化（GEO）赛道<br>让品牌在AI时代被看见、被信任、被选择</p>
+      </div>
+      <div class="footer-col">
+        <h4>核心业务</h4>
+        <a href="#business">GEO实战训练营</a>
+        <a href="#business">自媒体运营</a>
+        <a href="#business">互联网营销</a>
+        <a href="#business">品牌代运营</a>
+      </div>
+      <div class="footer-col">
+        <h4>关于七文</h4>
+        <a href="#about">企业介绍</a>
+        <a href="#team">师资力量</a>
+        <a href="#cases">服务案例</a>
+        <a href="#news">新闻动态</a>
+        <a href="#contact-form">联系我们</a>
+      </div>
+      <div class="footer-col">
+        <h4>联系方式</h4>
+        <a>电话：欢迎咨询</a>
+        <a>微信：欢迎联系</a>
+        <a>地址：江西省赣州市</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2023-2026 赣州七文在线咨询服务有限公司 版权所有
+    </div>
+  </div>
+</footer>
+
+<script>
+// Form submit handler
+function handleSubmit(e) {
+  e.preventDefault();
+  const form = document.getElementById('contactForm');
+  const wrap = document.getElementById('formWrap');
+  const success = document.getElementById('formSuccess');
+  // Simulate form submission
+  const btn = form.querySelector('.form-submit');
+  btn.textContent = '提交中...';
+  btn.disabled = true;
+  setTimeout(() => {
+    form.style.display = 'none';
+    success.classList.add('show');
+  }, 1200);
+}
+
+// ---- News article data ----
+const articleData = {
+  1: {
+    category: '行业趋势', catClass: 'ai',
+    date: '2026-05-28',
+    title: 'AI搜索时代全面来临：GEO优化为何成为企业品牌必修课',
+    content: `
+      <p>2026年，以豆包、Kimi、文心一言、通义千问为代表的AI搜索引擎月活跃用户合计已突破8亿，标志着AI搜索时代的全面到来。与传统的「关键词→链接列表」搜索模式不同，AI搜索引擎直接生成结构化答案，并引用权威来源作为依据。</p>
+      <h3>什么是GEO？</h3>
+      <p>GEO（Generative Engine Optimization，生成式引擎优化）是指通过系统化的内容策略，让品牌信息在AI搜索引擎的回答中被优先引用、准确呈现的一种新型数字营销方法。它不是替代SEO，而是在SEO基础上向AI内容生态的延伸。</p>
+      <h3>为什么企业必须重视GEO？</h3>
+      <p>数据显示，2026年Q1通过AI搜索引擎完成的商业决策查询同比增长320%，其中有67%的用户表示会信任AI推荐的品牌。对于中小微企业而言，这意味着：</p>
+      <ul>
+        <li><strong>流量入口正在迁移：</strong>越来越多的用户跳过传统搜索引擎，直接在AI对话中寻找答案</li>
+        <li><strong>窗口期有限：</strong>目前AI搜索引擎对优质品牌内容的索引覆盖率不足15%，早期布局者将享受巨大的先发优势</li>
+        <li><strong>成本优势明显：</strong>相比传统SEM竞价，GEO的长期边际成本趋近于零</li>
+      </ul>
+      <h3>七文GEO的核心方法论</h3>
+      <p>七文GEO团队经过大量实战验证，总结出「词库搭建→内容生产→EEAT信任构建→持续优化」的四步闭环体系，帮助中小微企业以极低成本快速切入AI搜索生态。目前已累计服务超过10万客户，实战案例覆盖电商、教育、本地服务、制造业等多个行业。</p>
+    `
+  },
+  2: {
+    category: '训练营', catClass: 'training',
+    date: '2026-05-20',
+    title: '七文GEO实战训练营第二期圆满收官，学员直呼"颠覆认知"',
+    content: `
+      <p>5月18日，七文GEO实战训练营第二期在赣州圆满落下帷幕。本期训练营为期21天，吸引了来自全国12个省份的50余位学员参加，涵盖电商、教育、本地服务、制造业、餐饮等多个行业。</p>
+      <h3>课程亮点回顾</h3>
+      <p>本期训练营在第一期基础上进行了全面升级，新增了以下核心模块：</p>
+      <ul>
+        <li><strong>AI问答平台深度拆解：</strong>豆包、Kimi、文心一言等主流AI搜索引擎的内容引用规则与权重分析</li>
+        <li><strong>品牌词库搭建实战：</strong>从零构建专属品牌词库，覆盖行业长尾词、场景词、地域词</li>
+        <li><strong>EEAT信任资产打造：</strong>如何系统性构建品牌专业度、权威度和可信度</li>
+        <li><strong>代运营变现模型：</strong>学会可复用的内容生产与变现流程</li>
+      </ul>
+      <h3>学员反馈</h3>
+      <p>「以前总觉得AI离我们传统行业很远，上了这个课才发现，AI获客的门槛比想象中低太多了！」——来自东莞的五金加工厂老板李总</p>
+      <p>「最让我震撼的是EEAT体系的搭建思路，这套方法论让我重新理解了品牌内容的价值。」——来自杭州的电商创业者王女士</p>
+      <p>截至结营当日，已有超过60%的学员成功搭建了自己的品牌GEO内容矩阵，部分学员在训练营期间已经开始从AI问答平台获取流量。</p>
+      <h3>下一期预告</h3>
+      <p>第三期GEO实战训练营正在筹备中，预计7月开营。欢迎通过本页面联系表单预约名额。</p>
+    `
+  },
+  3: {
+    category: '客户案例', catClass: 'case',
+    date: '2026-05-15',
+    title: '驰青春品牌2个月GEO优化深度复盘：从无人问津到稳定获客',
+    content: `
+      <p>驰青春是赣州本土知名的假发定制品牌，专注中老年假发定制与形象重塑，在章贡区、瑞金市开设实体门店。然而在线下客流日益萎缩的背景下，驰青春面临着严重的获客困境。</p>
+      <h3>初始困境</h3>
+      <p>今年3月之前，驰青春在AI问答平台几乎零曝光。在豆包、Kimi等AI搜索引擎中搜索「赣州假发」「中老年假发定制」等关键词，几乎看不到任何驰青春的品牌信息。品牌主要依靠线下地推和熟人介绍获客，增长天花板明显。</p>
+      <h3>七文GEO四步操盘法</h3>
+      <p><strong>第一步：AI引擎内容基建（第1-2周）</strong></p>
+      <p>七文团队首先为驰青春搭建了完整的品牌词库，覆盖「假发定制」「中老年假发」「赣州假发店」「瑞金假发」等核心词及长尾变体。随后围绕每个关键词，创作深度品牌内容，确保在AI问答平台的索引库中建立品牌信息节点。</p>
+      <p><strong>第二步：权威信任资产沉淀（第3-4周）</strong></p>
+      <p>系统梳理驰青春的品牌资质、客户案例、用户好评等信任资产，打造AI可信权威内容，提升品牌在EEAT框架下的评分。</p>
+      <p><strong>第三步：本地流量精准激活（第5-6周）</strong></p>
+      <p>针对赣州本地化搜索场景，优化内容的地域适配性，强化「赣州假发定制哪家好」「瑞金假发店推荐」等本地意图关键词的内容覆盖。</p>
+      <p><strong>第四步：持续优化排名上升（第7-8周）</strong></p>
+      <p>持续发布优质内容，监测AI问答平台引用数据，迭代优化内容策略。</p>
+      <h3>最终成果</h3>
+      <p>经过2个月系统优化，驰青春品牌在豆包等AI问答平台实现了从零到日均10+精准咨询的跨越，并已成功达成多笔业务成交。品牌在「赣州假发」核心词下的AI搜索引用率从0提升至TOP3。</p>
+      <p>驰青春创始人反馈：「以前完全没想到AI还能这么用，现在每天都有新客户说是豆包推荐来的，太神奇了！」</p>
+    `
+  },
+  4: {
+    category: '行业报告', catClass: 'ai',
+    date: '2026-05-08',
+    title: '2026年GEO趋势报告：中小微企业如何抓住AI流量红利窗口期',
+    content: `
+      <p>近日，多家第三方研究机构联合发布了《2026年中国AI搜索生态与GEO趋势报告》，报告揭示了当前AI搜索领域正在发生的深刻变革。</p>
+      <h3>核心数据速览</h3>
+      <ul>
+        <li>中国AI搜索引擎MAU（月活用户）已突破8亿，预计2026年底将达到12亿</li>
+        <li>62%的用户表示「经常」使用AI搜索引擎进行消费决策</li>
+        <li>AI搜索引擎对优质品牌内容的索引覆盖率目前仅为12-15%</li>
+        <li>预计窗口期仅有18-24个月，之后GEO竞争将白热化</li>
+      </ul>
+      <h3>中小微企业的机会在哪里？</h3>
+      <p>报告指出，当前GEO赛道最大的机会恰恰属于中小微企业。原因有三：</p>
+      <ul>
+        <li><strong>大企业反应慢：</strong>大型企业的品牌部门对AI搜索的认知和布局普遍滞后，这给了中小企业抢先建立AI品牌声量的窗口</li>
+        <li><strong>内容质量为王：</strong>AI搜索引擎更看重内容的专业度和相关性，而非网站的域名权威度，这意味着中小企业的高质量内容可以与大型平台获得同等曝光</li>
+        <li><strong>成本极低：</strong>相比传统竞价排名，GEO几乎不需要付费投放预算，只需系统化的内容生产</li>
+      </ul>
+      <h3>七文GEO的建议</h3>
+      <p>我们建议所有品牌从现在开始，至少完成以下三项基础工作：第一，梳理品牌核心关键词库；第二，在官网和自媒体平台发布高质量的EEAT内容；第三，持续监测AI问答平台对品牌内容的引用情况。这三步走完，品牌在AI搜索生态中的基本盘就建立起来了。</p>
+    `
+  },
+  5: {
+    category: '运营干货', catClass: 'media',
+    date: '2026-04-28',
+    title: '从0到10万用户：七文GEO自媒体矩阵运营实战经验全分享',
+    content: `
+      <p>七文GEO核心主创团队自2016年起深耕自媒体赛道，十年间累计服务了数十万客户，沉淀了一套可复用的「内容三板斧」方法论。本文将首次对外公开这套方法的核心框架。</p>
+      <h3>第一板斧：品牌词库搭建</h3>
+      <p>品牌词库是GEO的地基。我们建议按照三个维度搭建：行业核心词（你的产品/服务是什么）、场景长尾词（用户在什么场景下需要你）、地域关键词（你在哪里服务）。一个成熟的品牌词库通常包含200-500个关键词，覆盖用户从泛需求到精准购买的完整决策路径。</p>
+      <h3>第二板斧：EEAT内容矩阵</h3>
+      <p>围绕词库中的每个核心关键词，按照EEAT四维框架创作内容：Experience（经验分享类内容）、Expertise（专业知识类内容）、Authoritativeness（权威背书类内容）、Trustworthiness（信任建立类内容）。四类内容交叉布局，形成品牌内容护城河。</p>
+      <h3>第三板斧：AI引用监测与迭代</h3>
+      <p>定期在主流AI问答平台搜索品牌核心关键词，观察品牌内容是否被引用、引用位置和准确性。根据监测结果持续优化内容策略，确保品牌在AI搜索生态中的曝光持续提升。</p>
+      <h3>让AI「偏爱」你的品牌</h3>
+      <p>我们的核心理念是：不要试图「欺骗」AI搜索引擎，而是成为这个领域最值得被引用的信息来源。当你的品牌内容足够专业、全面、可信时，AI自然会优先引用你。</p>
+    `
+  },
+  6: {
+    category: 'GEO干货', catClass: 'geo',
+    date: '2026-04-20',
+    title: 'GEO vs SEO终极对比：AI时代品牌曝光的新战场该如何布局',
+    content: `
+      <p>很多企业主问我们：做了SEO还需要做GEO吗？两者到底有什么区别？本文将系统拆解这两大优化体系的核心差异与协同策略。</p>
+      <h3>核心差异一览</h3>
+      <p><strong>目标平台不同：</strong>SEO面向百度、Google等传统搜索引擎，优化目标是搜索结果页的排名；GEO面向豆包、Kimi、文心一言等AI问答引擎，优化目标是AI回答中的内容引用。</p>
+      <p><strong>内容逻辑不同：</strong>SEO更注重关键词密度、外链数量、网站技术指标等技术因素；GEO更注重内容质量、专业度、权威性和可信度（EEAT框架）。</p>
+      <p><strong>用户行为不同：</strong>SEO用户看到的是链接列表，需要点击跳转；GEO用户直接在对话中获得答案，品牌信息以引用形式呈现。</p>
+      <h3>双线协同策略</h3>
+      <p>我们不建议企业二选一，而是应该双线布局。SEO为品牌网站带来传统搜索流量，GEO为品牌带来AI问答平台的曝光和信任背书。两者相辅相成，构成完整的品牌数字资产闭环。</p>
+      <h3>七文GEO的建议</h3>
+      <p>如果你已经做了SEO优化，可以将现有的高质量内容按照EEAT框架进行二次加工和分发，用最低的边际成本切入GEO赛道。如果你还没开始任何数字营销布局，建议从GEO入手——因为当前AI搜索的竞争还远不如传统搜索激烈，ROI更高。</p>
+    `
+  },
+  7: {
+    category: '学员故事', catClass: 'training',
+    date: '2026-04-12',
+    title: '学员专访：传统制造业老板如何用GEO3个月打开线上获客新渠道',
+    content: `
+      <p>来自东莞的李总是五金加工行业的「老江湖」，做了15年工厂，生意一直靠老客户和同行介绍维持。2025年底，他明显感觉到订单量在下降——「老客户自己的生意都不好做了，哪还有单子给我们？」</p>
+      <h3>从怀疑到相信</h3>
+      <p>「一开始我根本不信什么AI获客，觉得那都是互联网公司玩的，跟制造业没关系。」李总坦言。但在朋友的推荐下，他抱着试试看的心态参加了七文GEO实战训练营第一期。</p>
+      <p>「第一节课听完我就服了。原来现在客户真的在用豆包、Kimi搜供应商，而我的工厂在这些平台上完全搜不到！」</p>
+      <h3>3个月蜕变</h3>
+      <p>结营后，李总按照七文方法论，为自己工厂搭建了品牌词库和EEAT内容矩阵。3个月后：</p>
+      <ul>
+        <li>工厂在「东莞五金加工」「精密零部件定制」等核心词下的AI搜索引用率进入TOP5</li>
+        <li>累计从AI问答平台获取精准询盘200+</li>
+        <li>成功转化订单12笔，总金额超80万元</li>
+        <li>获客成本仅为传统渠道的1/10</li>
+      </ul>
+      <p>「现在每天打开后台都能看到AI推荐过来的客户，这在以前想都不敢想。」李总说，「我已经让公司市场部的所有同事都报了第二期训练营。」</p>
+    `
+  },
+  8: {
+    category: '技术分享', catClass: 'geo',
+    date: '2026-04-05',
+    title: 'EEAT信任体系搭建指南：让AI引擎主动引用你的品牌内容',
+    content: `
+      <p>EEAT是Google提出的内容质量评估框架，目前已成为主流AI搜索引擎评估内容可信度的核心标准。理解EEAT并围绕它搭建品牌内容体系，是GEO优化的根基。</p>
+      <h3>EEAT四维拆解</h3>
+      <p><strong>Experience（经验）：</strong>展示品牌的一手经验和实战案例。AI引擎会优先引用那些来自「亲历者」而非「搬运工」的内容。建议多发布客户案例、项目复盘、行业观察等真实经验类内容。</p>
+      <p><strong>Expertise（专业）：</strong>证明你在所属领域的专业深度。通过发布行业白皮书、技术解析、专业知识科普等内容，建立品牌的专业形象。</p>
+      <p><strong>Authoritativeness（权威）：</strong>获取行业认可和第三方背书。媒体报道、行业奖项、客户评价、合作伙伴背书等，都是提升权威度的有效方式。</p>
+      <p><strong>Trustworthiness（信任）：</strong>建立用户对品牌的信任感。真实的联系方式、透明的价格体系、完善的售后服务、真实用户评价等，都是信任资产。</p>
+      <h3>实操建议</h3>
+      <p>七文GEO建议品牌每月在四个维度各产出2-3篇高质量内容，形成「四维均衡」的内容矩阵。同时务必注意内容的原创性和专业度——AI搜索引擎对低质量、重复内容的识别能力越来越强。</p>
+    `
+  },
+  9: {
+    category: '行业资讯', catClass: 'media',
+    date: '2026-03-28',
+    title: '七文GEO受邀参加2026中国AI营销峰会，分享中小企业GEO实战经验',
+    content: `
+      <p>3月25日，2026中国AI营销峰会在深圳举行，来自全国各地的500余位品牌营销从业者齐聚一堂，共同探讨AI时代的营销变革。七文GEO作为国内首批专注GEO赛道的服务商，受邀参加了本次峰会。</p>
+      <h3>主题分享</h3>
+      <p>七文GEO创始人在峰会主论坛做了题为《让中小微品牌在AI时代被看见》的主题分享，首次公开了团队在服务10万+客户过程中沉淀的GEO方法论体系，并现场发布了《中小微企业AI搜索获客白皮书》。</p>
+      <h3>白皮书核心发现</h3>
+      <ul>
+        <li>85%的中小微企业尚未在AI搜索平台建立品牌内容资产</li>
+        <li>已布局GEO的企业平均获客成本下降62%</li>
+        <li>AI搜索引用的品牌内容中，EEAT评分高的内容被引用概率是普通内容的4.7倍</li>
+      </ul>
+      <p>分享结束后，七文GEO展台吸引了大量参会者驻足咨询，现场即收到多家企业的合作意向。本次峰会进一步验证了GEO作为品牌营销新赛道的巨大潜力和市场认可度。</p>
+    `
+  }
+};
+
+// Open article modal
+function openArticle(id) {
+  const data = articleData[id];
+  if (!data) return;
+  const modal = document.getElementById('newsModal');
+  const body = document.getElementById('newsModalBody');
+  body.innerHTML = `
+    <span class="modal-category news-category-tag ${data.catClass}">${data.category}</span>
+    <div class="modal-date">${data.date}</div>
+    <h2>${data.title}</h2>
+    <div class="modal-content">${data.content}</div>
+  `;
+  modal.classList.add('show');
+  document.body.style.overflow = 'hidden';
+  modal.scrollTop = 0;
+}
+
+// Close article modal
+function closeArticle() {
+  document.getElementById('newsModal').classList.remove('show');
+  document.body.style.overflow = '';
+}
+document.getElementById('newsModal').addEventListener('click', function(e) {
+  if (e.target === this) closeArticle();
+});
+
+// Load more news
+function loadMoreNews() {
+  const more = document.getElementById('newsGridMore');
+  const btn = document.getElementById('newsLoadMore');
+  more.style.display = 'grid';
+  // Add observer to newly visible cards
+  more.querySelectorAll('.news-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+    // Trigger animation
+    setTimeout(() => {
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+    }, 100);
+  });
+  btn.style.display = 'none';
+}
+
+// Nav scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// Mobile menu toggle
+const toggle = document.getElementById('mobileToggle');
+const navLinks = document.getElementById('navLinks');
+toggle.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => navLinks.classList.remove('open'));
+});
+
+// Scroll reveal animation
+const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -40px 0px' };
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.mission-card, .stat-card, .business-card, .team-item, .timeline-step, .case-result, .news-card')
+  .forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (href === '#') return;
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+
+</body>
+</html>
